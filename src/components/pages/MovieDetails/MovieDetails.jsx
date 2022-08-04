@@ -1,6 +1,6 @@
 import { useParams, Link, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getMovieById, getGenres, getCast } from "components/services/getMoviesAndInfo";
+import { getMovieById, getGenres } from "components/services/getMoviesAndInfo";
 
 // import Cast from "../Cast";
 // import Reviews from "../Reviews";
