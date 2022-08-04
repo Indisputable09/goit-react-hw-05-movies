@@ -16,14 +16,14 @@ const Reviews = () => {
 
     return (
         <ul>
-            {reviews.map(({ id, author, content }) => {
+            {reviews.length !== 0 ? reviews.map(({ id, author, content }) => {
                 return (
                     <li key={id}>
                         <h3>Author: {author}</h3>
                         <p>{content}</p>
                     </li>
                 )
-            })}
+            }) : <p>No Reviews</p>}
         </ul>
     );
 };
