@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { fetchTrendingToday } from "components/services/getTrendingToday";
+import { fetchTrendingToday } from "components/services/getMoviesAndInfo";
 
 const Home = () => {
     const [movies, setMovies] = useState([]);
