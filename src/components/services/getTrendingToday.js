@@ -16,3 +16,9 @@ export const fetchTrendingToday = async () => {
     console.log(error);
   }
 };
+
+export const getMovieById = async movieId => {
+  const movies = await fetchTrendingToday();
+
+  return movies.find(movie => movie.id === movieId);
+};
