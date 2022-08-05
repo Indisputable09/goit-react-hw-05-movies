@@ -19,8 +19,13 @@ export const fetchTrendingToday = async () => {
 
 export const getMovieById = async movieId => {
   try {
-    const trendingMovies = await fetchTrendingToday();
-    return trendingMovies.find(movie => movie.id === Number(movieId));
+    const ID = Number(movieId);
+    const response = await axios.get(`movie/${ID}`, {
+      params: {
+        api_key: API_KEY,
+      },
+    });
+    return response.data;
   } catch (error) {
     console.log(error);
   }
