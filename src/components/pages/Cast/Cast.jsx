@@ -14,9 +14,8 @@ const Cast = () => {
             const castInfo = await getCast(movieId);
             setCast(castInfo);
         })();
-    }, [movieId])
+    }, [movieId]);
     
-    console.log(cast)
     return (
         <ul>
             {cast.map(({ id, name, profile_path, character }) => {

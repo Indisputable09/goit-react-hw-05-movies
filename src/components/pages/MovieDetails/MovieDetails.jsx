@@ -1,4 +1,4 @@
-import { useParams, Link, Outlet } from "react-router-dom";
+import { useParams, Link, Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getMovieById, getGenres } from "components/services/getMoviesAndInfo";
 
@@ -6,6 +6,9 @@ export const IMG_PATH = 'https://image.tmdb.org/t/p/w500/';
 
 const MovieDetails = () => {
     const { movieId } = useParams();
+    const location = useLocation();
+    const backLinkHref = location.state?.from ?? "/movies";
+
 
     const [movie, setMovie] = useState({});
     const [genres, setGenres] = useState('');
@@ -29,6 +32,8 @@ const MovieDetails = () => {
     return (
         <>
             {Object.keys(movie).length > 0 ? <>
+                <Link to={backLinkHref}>Back to movies</Link>
+                {/* <Link to={location.state.from}>Back to products</Link> */}
                 <div className="info">
                     <div className="img">
                         <img src={IMG_PATH + backdrop_path} alt={title} />

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { fetchTrendingToday } from "components/services/getMoviesAndInfo";
 
 const Home = () => {
     const [movies, setMovies] = useState([]);
+    const location = useLocation();
 
     useEffect(() => {
         (async function getMovies() {
@@ -18,7 +19,7 @@ const Home = () => {
             <ul>
                 {movies.map(({id, title}) => {
                     return (
-                        <li key={id}><Link to={`movies/${id}`}>{title}</Link></li>
+                        <li key={id}><Link to={`movies/${id}`} state={{ from: location }}>{title}</Link></li>
                     )
                 })}
             </ul>
