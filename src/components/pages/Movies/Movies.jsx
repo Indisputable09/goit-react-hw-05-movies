@@ -6,8 +6,6 @@ const Movies = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [movies, setMovies] = useState([]);
     console.log("~ movies", movies)
-    // const [searchParams, setSearchParams] = useSearchParams();
-    // console.log("~ searchParams", searchParams.get('title'));
 
     useEffect(() => {
         if (!searchQuery) {

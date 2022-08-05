@@ -6,7 +6,6 @@ export const IMG_PATH = 'https://image.tmdb.org/t/p/w500/';
 
 const MovieDetails = () => {
     const { movieId } = useParams();
-    console.log("~ movieId", movieId)
 
     const [movie, setMovie] = useState({});
     const [genres, setGenres] = useState('');
@@ -15,7 +14,6 @@ const MovieDetails = () => {
         async function getMovie() {
             try {
                 const movie = await getMovieById(movieId);
-                console.log("~ movie", movie)
                 const genres = await getGenres(movie.genre_ids);
                 setMovie(movie);
                 setGenres(genres);
@@ -31,28 +29,28 @@ const MovieDetails = () => {
     return (
         <>
             {Object.keys(movie).length > 0 ? <>
-            <div className="info">
-                <div className="img">
-                    <img src={IMG_PATH + backdrop_path} alt={title} />
+                <div className="info">
+                    <div className="img">
+                        <img src={IMG_PATH + backdrop_path} alt={title} />
+                    </div>
+                    <div className="main-info">
+                        <h2>{title} ({release_date.slice(0, 4)})</h2>
+                        <p>Vote - {Math.round(vote_average * 10) / 10}</p>
+                        <h3>Overview</h3>
+                        <p>{overview}</p>
+                        <h3>Genres</h3>
+                        <p>{genres.length === 0 ? 'No genres for this movie' : genres}</p>
+                    </div>
                 </div>
-                <div className="main-info">
-                    <h2>{title} ({release_date.slice(0, 4)})</h2>
-                    <p>Vote - {Math.round(vote_average * 10) / 10}</p>
-                    <h3>Overview</h3>
-                    <p>{overview}</p>
-                    <h3>Genres</h3>
-                    <p>{genres.length === 0 ? 'No genres for this movie' : genres}</p>
+                <div className="additional-info">
+                    <h3>Additional information</h3>
+                    <ul>
+                        <Link to='cast'>Cast</Link>
+                        <Link to='reviews'>Reviews</Link>
+                    </ul>
+                    <Outlet />
                 </div>
-            </div>
-            <div className="additional-info">
-                <h3>Additional information</h3>
-                <ul>
-                    <Link to='cast'>Cast</Link>
-                    <Link to='reviews'>Reviews</Link>
-                </ul>
-                <Outlet/>
-            </div>
-            </> : <p>No movie</p>}
+            </> : <b>Sorry, there is no movie.</b>}
         </>
     );
 };

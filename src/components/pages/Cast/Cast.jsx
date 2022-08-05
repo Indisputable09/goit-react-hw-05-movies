@@ -22,7 +22,7 @@ const Cast = () => {
             {cast.map(({ id, name, profile_path, character }) => {
                 return (
                     <li key={id}>
-                        <img src={profile_path ? IMG_PATH + profile_path : NO_IMAGE} alt={name} />
+                        <img src={profile_path ? IMG_PATH + profile_path : NO_IMAGE} alt={name} loading='lazy' />
                         <p>{name}</p>
                         <p>Character: {character}</p>
                     </li>

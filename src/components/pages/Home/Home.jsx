@@ -10,8 +10,7 @@ const Home = () => {
             const response = await fetchTrendingToday();
             setMovies(response);
         })();
-    }, [])
-    
+    }, []);
 
     return (
         <>

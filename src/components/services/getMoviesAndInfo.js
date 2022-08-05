@@ -4,6 +4,7 @@ const MEDIA_TYPE = 'movie';
 const TIME_WINDOW = 'day';
 
 axios.defaults.baseURL = `https://api.themoviedb.org/3/`;
+
 export const fetchTrendingToday = async () => {
   try {
     const response = await axios.get(`trending/${MEDIA_TYPE}/${TIME_WINDOW}`, {
