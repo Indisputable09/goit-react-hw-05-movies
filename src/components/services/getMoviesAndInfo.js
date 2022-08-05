@@ -80,7 +80,6 @@ export const getMovieBySearch = async query => {
         query,
       },
     });
-    console.log(response.data.results);
     return response.data.results;
   } catch (error) {
     console.log(error);
