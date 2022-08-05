@@ -2,28 +2,27 @@ import { useParams, Link, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getMovieById, getGenres } from "components/services/getMoviesAndInfo";
 
-// import Cast from "../Cast";
-// import Reviews from "../Reviews";
-
 export const IMG_PATH = 'https://image.tmdb.org/t/p/w500';
 
 const MovieDetails = () => {
 
     const { movieId } = useParams();
+    console.log("~ movieId", movieId)
 
     const [movie, setMovie] = useState({});
     const [genres, setGenres] = useState('');
 
     useEffect(() => {
-        // if (!movie) {
-        //     console.log('Nooooo')
-        //     return
-        // }
         (async function getMovie() {
-            const movie = await getMovieById(movieId);
+            try {
+                const movie = await getMovieById(movieId);
+            console.log("~ movie", movie)
             const genres = await getGenres(movie.genre_ids);
             setMovie(movie);
             setGenres(genres);
+            } catch (error) {
+                console.log(error)
+            }
         })();
     }, [movieId]);
 
@@ -53,9 +52,6 @@ const MovieDetails = () => {
                 </ul>
                 <Outlet/>
             </div>
-
-            {/* <Cast />
-            <Reviews/> */}
         </>
     );
 };

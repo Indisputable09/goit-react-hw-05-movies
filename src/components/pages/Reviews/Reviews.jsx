@@ -23,7 +23,7 @@ const Reviews = () => {
                         <p>{content}</p>
                     </li>
                 )
-            }) : <p>No Reviews</p>}
+            }) : <b>We don't have any reviews for this movie.</b>}
         </ul>
     );
 };

@@ -19,47 +19,70 @@ export const fetchTrendingToday = async () => {
 
 export const getMovieById = async movieId => {
   try {
-    const movies = await fetchTrendingToday();
-    return movies.find(movie => movie.id === Number(movieId));
+    const trendingMovies = await fetchTrendingToday();
+    return trendingMovies.find(movie => movie.id === Number(movieId));
   } catch (error) {
     console.log(error);
   }
 };
 
 export const getGenres = async (genres = []) => {
-  const response = await axios.get(`genre/${MEDIA_TYPE}/list`, {
-    params: {
-      api_key: API_KEY,
-    },
-  });
-  const genreArray = response.data.genres;
-  const genreResult = genreArray.reduce((previousValue, element) => {
-    if (genres.includes(element.id)) {
-      previousValue.push(element.name);
-    }
-    return previousValue;
-  }, []);
-  if (genreResult.length === 0) {
-    return 'No Genres';
-  } else {
+  try {
+    const response = await axios.get(`genre/${MEDIA_TYPE}/list`, {
+      params: {
+        api_key: API_KEY,
+      },
+    });
+    const genreArray = response.data.genres;
+    const genreResult = genreArray.reduce((previousValue, element) => {
+      if (genres.includes(element.id)) {
+        previousValue.push(element.name);
+      }
+      return previousValue;
+    }, []);
     return genreResult.join(', ');
+  } catch (error) {
+    console.log(error);
   }
 };
 
 export const getCast = async id => {
-  const response = await axios.get(`movie/${id}/credits`, {
-    params: {
-      api_key: API_KEY,
-    },
-  });
-  return response.data.cast;
+  try {
+    const response = await axios.get(`movie/${id}/credits`, {
+      params: {
+        api_key: API_KEY,
+      },
+    });
+    return response.data.cast;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const getReviews = async id => {
-  const response = await axios.get(`movie/${id}/reviews`, {
-    params: {
-      api_key: API_KEY,
-    },
-  });
-  return response.data.results;
+  try {
+    const response = await axios.get(`movie/${id}/reviews`, {
+      params: {
+        api_key: API_KEY,
+      },
+    });
+    return response.data.results;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getMovieBySearch = async query => {
+  try {
+    const response = await axios.get(`search/movie`, {
+      params: {
+        api_key: API_KEY,
+        query,
+      },
+    });
+    console.log(response.data.results);
+    return response.data.results;
+  } catch (error) {
+    console.log(error);
+  }
 };

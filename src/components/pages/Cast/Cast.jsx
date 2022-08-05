@@ -14,16 +14,17 @@ const Cast = () => {
             const castInfo = await getCast(movieId);
             setCast(castInfo);
         })();
-      
     }, [movieId])
     
+    console.log(cast)
     return (
         <ul>
-            {cast.map(({ id, name, profile_path }) => {
+            {cast.map(({ id, name, profile_path, character }) => {
                 return (
                     <li key={id}>
                         <img src={profile_path ? IMG_PATH + profile_path : NO_IMAGE} alt={name} />
                         <p>{name}</p>
+                        <p>Character: {character}</p>
                     </li>
                 )
             })}
