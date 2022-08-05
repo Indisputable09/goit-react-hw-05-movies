@@ -5,6 +5,7 @@ import { getMovieBySearch } from "components/services/getMoviesAndInfo";
 const Movies = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [movies, setMovies] = useState([]);
+    console.log("~ movies", movies)
     // const [searchParams, setSearchParams] = useSearchParams();
     // console.log("~ searchParams", searchParams.get('title'));
 
@@ -23,7 +24,6 @@ const Movies = () => {
         e.preventDefault();
         const inputValue = e.target.query.value;
         setSearchQuery(inputValue);
-        // console.log("~ searchQuery on Submit", searchQuery)
     };
 
     return (

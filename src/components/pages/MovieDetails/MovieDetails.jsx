@@ -5,7 +5,6 @@ import { getMovieById, getGenres } from "components/services/getMoviesAndInfo";
 export const IMG_PATH = 'https://image.tmdb.org/t/p/w500';
 
 const MovieDetails = () => {
-
     const { movieId } = useParams();
     console.log("~ movieId", movieId)
 
