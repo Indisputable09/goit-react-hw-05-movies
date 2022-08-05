@@ -16,10 +16,10 @@ const MovieDetails = () => {
         (async function getMovie() {
             try {
                 const movie = await getMovieById(movieId);
-            console.log("~ movie", movie)
-            const genres = await getGenres(movie.genre_ids);
-            setMovie(movie);
-            setGenres(genres);
+                console.log("~ movie", movie)
+                const genres = await getGenres(movie.genre_ids);
+                setMovie(movie);
+                setGenres(genres);
             } catch (error) {
                 console.log(error)
             }

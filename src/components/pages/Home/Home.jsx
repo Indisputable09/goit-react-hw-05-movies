@@ -4,8 +4,6 @@ import { fetchTrendingToday } from "components/services/getMoviesAndInfo";
 
 const Home = () => {
     const [movies, setMovies] = useState([]);
-    // const [searchParams, setSearchParams] = useSearchParams();
-    // console.log("~ searchParams", searchParams)
 
     useEffect(() => {
         (async function getMovies() {

@@ -5,6 +5,8 @@ import { getMovieBySearch } from "components/services/getMoviesAndInfo";
 const Movies = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [movies, setMovies] = useState([]);
+    // const [searchParams, setSearchParams] = useSearchParams();
+    // console.log("~ searchParams", searchParams.get('title'));
 
     useEffect(() => {
         if (!searchQuery) {
@@ -15,14 +17,14 @@ const Movies = () => {
             setMovies(response);
         })();
         console.log("~ searchQuery", searchQuery)
-    }, [searchQuery])
+    }, [searchQuery]);
     
     const handleSubmit = (e) => {
         e.preventDefault();
         const inputValue = e.target.query.value;
         setSearchQuery(inputValue);
         // console.log("~ searchQuery on Submit", searchQuery)
-    }
+    };
 
     return (
         <form onSubmit={handleSubmit}>
