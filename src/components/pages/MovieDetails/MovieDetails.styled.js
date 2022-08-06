@@ -8,6 +8,10 @@ export const Img = styled.img`
   @media screen and (min-width: 768px) {
     width: 500px;
   }
+
+  @media screen and (min-width: 1200px) {
+    width: 700px;
+  }
 `;
 
 export const AdditionalLink = styled(Link)`
