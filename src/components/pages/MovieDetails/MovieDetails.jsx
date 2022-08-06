@@ -12,7 +12,6 @@ const MovieDetails = () => {
 
     const [movie, setMovie] = useState({});
     const [genres, setGenres] = useState('');
-
     useEffect(() => {
         async function getMovie() {
             try {
@@ -26,14 +25,14 @@ const MovieDetails = () => {
         };
         getMovie()
     }, [movieId]);
-    
+
     const { backdrop_path, title, release_date, vote_average, overview } = movie;
+    const MOVIE_AVAILABLE = Object.keys(movie).length > 0;
     
     return (
         <>
-            {Object.keys(movie).length > 0 ? <>
+            {MOVIE_AVAILABLE ? <>
                 <Link to={backLinkHref}>Back to movies</Link>
-                {/* <Link to={location.state.from}>Back to products</Link> */}
                 <div className="info">
                     <div className="img">
                         <img src={IMG_PATH + backdrop_path} alt={title} />
@@ -55,7 +54,9 @@ const MovieDetails = () => {
                     </ul>
                     <Outlet />
                 </div>
-            </> : <b>Sorry, there is no movie.</b>}
+            </> : <>
+                <b>Sorry, there are no details for the movie.</b>
+                <Link to='/'>Go home</Link></>}
         </>
     );
 };
