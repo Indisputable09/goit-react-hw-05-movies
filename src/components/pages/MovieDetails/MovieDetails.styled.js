@@ -2,8 +2,12 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Img = styled.img`
-  width: 500px;
+  width: 300px;
   margin: ${p => p.theme.space[4]}px auto;
+
+  @media screen and (min-width: 768px) {
+    width: 500px;
+  }
 `;
 
 export const AdditionalLink = styled(Link)`
