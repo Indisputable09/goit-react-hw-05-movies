@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { getCast } from 'components/services/getMoviesAndInfo';
 import { IMG_PATH } from '../MovieDetails/MovieDetails';
 import { CastImg, List, ListItem } from './Cast.styled';
-import { Container } from '../Home/Home.styled';
 import { Box } from 'components/Box';
 
 const NO_IMAGE = 'https://cdn-icons-png.flaticon.com/512/2922/2922506.png';

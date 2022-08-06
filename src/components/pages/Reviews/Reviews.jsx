@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getReviews } from 'components/services/getMoviesAndInfo';
-import { Box } from 'components/Box';
 import { ListItem, ReviewTitle } from './Reviews.styled';
 
 const Reviews = () => {

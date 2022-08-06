@@ -1,11 +1,9 @@
-import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getMovieById, getGenres } from 'components/services/getMoviesAndInfo';
+import { getMovieById } from 'components/services/getMoviesAndInfo';
 import Loader from 'components/Loader';
 import { AdditionalLink, BackLink, Img } from './MovieDetails.styled';
 import { Box } from 'components/Box';
-// import  from ''
-import { Container, Title } from '../Home/Home.styled';
 
 export const IMG_PATH = 'https://image.tmdb.org/t/p/w500/';
 
