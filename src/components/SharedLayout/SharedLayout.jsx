@@ -1,9 +1,8 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Container, Navigation, Link } from './SharedLayout.styled';
+import { Navigation, Link } from './SharedLayout.styled';
 import Loader from 'components/Loader';
 import { Box } from 'components/Box';
-import { flex } from 'styled-system';
 
 const SharedLayout = () => {
   return (

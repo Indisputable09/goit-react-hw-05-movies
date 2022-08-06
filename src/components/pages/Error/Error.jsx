@@ -1,5 +1,4 @@
 import { Box } from 'components/Box';
-import { Link } from 'react-router-dom';
 import { BackLink } from '../MovieDetails/MovieDetails.styled';
 
 const Error = () => {
