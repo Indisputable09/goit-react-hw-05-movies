@@ -1,6 +1,7 @@
 import { useParams, Link, Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getMovieById, getGenres } from "components/services/getMoviesAndInfo";
+import Loader from "components/Loader";
 
 export const IMG_PATH = 'https://image.tmdb.org/t/p/w500/';
 
@@ -55,6 +56,7 @@ const MovieDetails = () => {
                     <Outlet />
                 </div>
             </> : <>
+                <Loader/>
                 <b>Sorry, there are no details for the movie.</b>
                 <Link to='/'>Go home</Link></>}
         </>
