@@ -56,7 +56,7 @@ const MovieDetails = () => {
                     <Outlet />
                 </div>
             </> : <>
-                <Loader/>
+                {/* <Loader/> */}
                 <b>Sorry, there are no details for the movie.</b>
                 <Link to='/'>Go home</Link></>}
         </>
