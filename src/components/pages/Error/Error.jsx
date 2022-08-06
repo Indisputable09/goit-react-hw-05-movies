@@ -1,12 +1,23 @@
-import { Link } from "react-router-dom";
+import { Box } from 'components/Box';
+import { Link } from 'react-router-dom';
+import { BackLink } from '../MovieDetails/MovieDetails.styled';
 
 const Error = () => {
-    return (
-        <>
-            <h1>Error. Page couldn't be found</h1>
-            <Link to='/'>Go home</Link>
-        </>
-    )
+  return (
+    <Box as="div" p="4" display="flex">
+      <BackLink to="/">Go home</BackLink>
+      <Box
+        as="b"
+        textAlign="center"
+        mx="auto"
+        mt="5"
+        fontSize="l"
+        color="orangered"
+      >
+        Error. Page couldn't be found.
+      </Box>
+    </Box>
+  );
 };
 
 export default Error;

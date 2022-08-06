@@ -30,4 +30,10 @@ cursor: pointer;
 a {
     text-decoration: none;
 }
+img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    display: block;
+}
 `;

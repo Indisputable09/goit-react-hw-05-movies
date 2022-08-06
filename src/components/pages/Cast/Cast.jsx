@@ -1,34 +1,47 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getCast } from "components/services/getMoviesAndInfo";
-import { IMG_PATH } from "../MovieDetails/MovieDetails";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getCast } from 'components/services/getMoviesAndInfo';
+import { IMG_PATH } from '../MovieDetails/MovieDetails';
+import { CastImg, List, ListItem } from './Cast.styled';
+import { Container } from '../Home/Home.styled';
+import { Box } from 'components/Box';
 
-const NO_IMAGE = 'https://cdn-icons-png.flaticon.com/512/2922/2922506.png'
+const NO_IMAGE = 'https://cdn-icons-png.flaticon.com/512/2922/2922506.png';
 
 const Cast = () => {
-    const [cast, setCast] = useState([]);
+  const [cast, setCast] = useState([]);
 
-    const { movieId } = useParams();
-    useEffect(() => {
-        (async function getCastInfo() {
-            const castInfo = await getCast(movieId);
-            setCast(castInfo);
-        })();
-    }, [movieId]);
-    
-    return (
-        <ul>
-            {cast.map(({ id, name, profile_path, character }) => {
-                return (
-                    <li key={id}>
-                        <img src={profile_path ? IMG_PATH + profile_path : NO_IMAGE} alt={name} loading='lazy' />
-                        <p>{name}</p>
-                        <p>Character: {character}</p>
-                    </li>
-                )
-            })}
-        </ul>
-    );
+  const { movieId } = useParams();
+  useEffect(() => {
+    (async function getCastInfo() {
+      const castInfo = await getCast(movieId);
+      setCast(castInfo);
+    })();
+  }, [movieId]);
+
+  return (
+    <Box>
+      <List>
+        {cast.map(({ id, name, profile_path, character }) => {
+          return (
+            <ListItem key={id}>
+              <CastImg
+                src={profile_path ? IMG_PATH + profile_path : NO_IMAGE}
+                alt={name}
+                loading="lazy"
+              />
+              <Box as="p" my="3">
+                {name}
+              </Box>
+              <Box as="p" mb="3">
+                Character: {character}
+              </Box>
+            </ListItem>
+          );
+        })}
+      </List>
+    </Box>
+  );
 };
 
 export default Cast;

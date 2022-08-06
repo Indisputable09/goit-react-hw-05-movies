@@ -32,25 +32,25 @@ export const getMovieById = async movieId => {
   }
 };
 
-export const getGenres = async (genres = []) => {
-  try {
-    const response = await axios.get(`genre/${MEDIA_TYPE}/list`, {
-      params: {
-        api_key: API_KEY,
-      },
-    });
-    const genreArray = response.data.genres;
-    const genreResult = genreArray.reduce((previousValue, element) => {
-      if (genres.includes(element.id)) {
-        previousValue.push(element.name);
-      }
-      return previousValue;
-    }, []);
-    return genreResult.join(', ');
-  } catch (error) {
-    console.log(error);
-  }
-};
+// export const getGenres = async (genres = []) => {
+//   try {
+//     const response = await axios.get(`genre/${MEDIA_TYPE}/list`, {
+//       params: {
+//         api_key: API_KEY,
+//       },
+//     });
+//     const genreArray = response.data.genres;
+//     const genreResult = genreArray.reduce((previousValue, element) => {
+//       if (genres.includes(element.id)) {
+//         previousValue.push(element.name);
+//       }
+//       return previousValue;
+//     }, []);
+//     return genreResult.join(', ');
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 export const getCast = async id => {
   try {

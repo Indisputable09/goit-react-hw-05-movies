@@ -1,31 +1,37 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getReviews } from "components/services/getMoviesAndInfo";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getReviews } from 'components/services/getMoviesAndInfo';
+import { Box } from 'components/Box';
+import { ListItem, ReviewTitle } from './Reviews.styled';
 
 const Reviews = () => {
-    const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState([]);
 
-    const { movieId } = useParams();
+  const { movieId } = useParams();
 
-    useEffect(() => {
-        (async function getReviewsInfo() {
-            const reviewsInfo = await getReviews(movieId);
-            setReviews(reviewsInfo);
-        })();
-    }, [movieId])
+  useEffect(() => {
+    (async function getReviewsInfo() {
+      const reviewsInfo = await getReviews(movieId);
+      setReviews(reviewsInfo);
+    })();
+  }, [movieId]);
 
-    return (
-        <ul>
-            {reviews.length !== 0 ? reviews.map(({ id, author, content }) => {
-                return (
-                    <li key={id}>
-                        <h3>Author: {author}</h3>
-                        <p>{content}</p>
-                    </li>
-                )
-            }) : <b>We don't have any reviews for this movie.</b>}
-        </ul>
-    );
+  return (
+    <ul>
+      {reviews.length !== 0 ? (
+        reviews.map(({ id, author, content }) => {
+          return (
+            <ListItem key={id}>
+              <ReviewTitle>Author: {author}</ReviewTitle>
+              <p>{content}</p>
+            </ListItem>
+          );
+        })
+      ) : (
+        <b>We don't have any reviews for this movie.</b>
+      )}
+    </ul>
+  );
 };
 
 export default Reviews;
