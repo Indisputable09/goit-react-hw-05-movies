@@ -10,7 +10,9 @@ export const IMG_PATH = 'https://image.tmdb.org/t/p/w500/';
 const MovieDetails = () => {
   const { movieId } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/movies';
+
+  const backLinkHref =
+    location.state?.from ?? '/movies' + location.state?.search ?? '/movies';
 
   const Status = {
     idle: 'IDLE',
@@ -101,10 +103,14 @@ const MovieDetails = () => {
               </Box>
               <Box as="ul" display="flex" mb="4">
                 <li>
-                  <AdditionalLink to="cast">Cast</AdditionalLink>
+                  <AdditionalLink to="cast" state={backLinkHref}>
+                    Cast
+                  </AdditionalLink>
                 </li>
                 <li>
-                  <AdditionalLink to="reviews">Reviews</AdditionalLink>
+                  <AdditionalLink to="reviews" state={backLinkHref}>
+                    Reviews
+                  </AdditionalLink>
                 </li>
               </Box>
               <Outlet />

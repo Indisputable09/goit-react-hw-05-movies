@@ -1,10 +1,12 @@
 import { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { Navigation, Link } from './SharedLayout.styled';
 import Loader from 'components/Loader';
 import { Box } from 'components/Box';
 
 const SharedLayout = () => {
+  const location = useLocation();
+  const backToMovieSearch = location.state?.from ?? '/movies';
   return (
     <>
       <Box
@@ -17,8 +19,11 @@ const SharedLayout = () => {
         as="header"
       >
         <Navigation>
-          <Link to="/">Home</Link>
-          <Link to="/movies">Movies</Link>
+          <Link to="/" state={{ from: location }}>
+            Home
+          </Link>
+          {/* <Link to={`/movies` + location.search}>Movies</Link> */}
+          <Link to={backToMovieSearch}>Movies</Link>
         </Navigation>
       </Box>
       <main>
