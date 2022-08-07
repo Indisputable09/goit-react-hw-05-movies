@@ -20,10 +20,7 @@ const Movies = () => {
 
   useEffect(() => {
     if (movieTitleQuery !== '') {
-      (async function getMovies() {
-        const response = await getMovieBySearch(movieTitleQuery);
-        setMovies(response);
-      })();
+      getMovies(movieTitleQuery);
     }
   }, [movieTitleQuery]);
 
@@ -31,11 +28,13 @@ const Movies = () => {
     if (!searchQuery) {
       return;
     }
-    (async function getMovies() {
-      const response = await getMovieBySearch(searchQuery);
-      setMovies(response);
-    })();
+    getMovies(searchQuery);
   }, [searchQuery]);
+
+  async function getMovies(query) {
+    const response = await getMovieBySearch(query);
+    setMovies(response);
+  }
 
   const handleSubmit = e => {
     e.preventDefault();
