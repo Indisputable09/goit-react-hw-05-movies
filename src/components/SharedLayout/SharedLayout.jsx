@@ -6,6 +6,7 @@ import { Box } from 'components/Box';
 
 const SharedLayout = () => {
   const location = useLocation();
+  console.log('~ location', location);
   const backToMovieSearch = location.state?.from ?? '/movies';
   return (
     <>
@@ -22,8 +23,9 @@ const SharedLayout = () => {
           <Link to="/" state={{ from: location }}>
             Home
           </Link>
-          {/* <Link to={`/movies` + location.search}>Movies</Link> */}
-          <Link to={backToMovieSearch}>Movies</Link>
+          <Link to={backToMovieSearch} state={{ from: location }}>
+            Movies
+          </Link>
         </Navigation>
       </Box>
       <main>

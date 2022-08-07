@@ -10,9 +10,11 @@ export const IMG_PATH = 'https://image.tmdb.org/t/p/w500/';
 const MovieDetails = () => {
   const { movieId } = useParams();
   const location = useLocation();
+  console.log('~ location', location);
 
-  const backLinkHref =
-    location.state?.from ?? '/movies' + location.state?.search ?? '/movies';
+  // const backLinkHref =
+  //   location.state?.from ?? '/movies' + location.state?.search ?? '/movies';
+  const backLinkHref = location.state?.from ?? location.state ?? '/';
 
   const Status = {
     idle: 'IDLE',
