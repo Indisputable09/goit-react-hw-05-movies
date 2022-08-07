@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { getMovieBySearch } from 'services/getMoviesAndInfo';
 import { Button, Form, Input } from './Movies.styled';
 import { Container, Img, ImgTitle, List, ListItem } from '../Home/Home.styled';
@@ -8,10 +8,24 @@ import { Box } from 'components/Box';
 
 const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [movies, setMovies] = useState(
-    JSON.parse(localStorage.getItem('movies')) ?? []
-  );
+  const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
+  const movieTitleQuery = searchParams.get('query') ?? '';
+
+  const updateQueryString = query => {
+    const nextParams = query !== '' ? { query } : {};
+    setSearchParams(nextParams);
+  };
+
+  useEffect(() => {
+    if (movieTitleQuery !== '') {
+      (async function getMovies() {
+        const response = await getMovieBySearch(movieTitleQuery);
+        setMovies(response);
+      })();
+    }
+  }, [movieTitleQuery]);
 
   useEffect(() => {
     if (!searchQuery) {
@@ -19,7 +33,6 @@ const Movies = () => {
     }
     (async function getMovies() {
       const response = await getMovieBySearch(searchQuery);
-      localStorage.setItem('movies', JSON.stringify(response));
       setMovies(response);
     })();
   }, [searchQuery]);
@@ -28,6 +41,7 @@ const Movies = () => {
     e.preventDefault();
     const inputValue = e.target.query.value;
     setSearchQuery(inputValue);
+    updateQueryString(inputValue);
     e.target.reset();
   };
 
