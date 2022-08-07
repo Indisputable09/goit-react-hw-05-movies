@@ -6,7 +6,6 @@ import { Box } from 'components/Box';
 
 const SharedLayout = () => {
   const location = useLocation();
-  console.log('~ location', location);
   const backToMovieSearch = location.state?.from ?? '/movies';
   return (
     <>
