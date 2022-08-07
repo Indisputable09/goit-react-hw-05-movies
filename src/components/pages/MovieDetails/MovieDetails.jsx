@@ -1,6 +1,6 @@
 import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getMovieById } from 'components/services/getMoviesAndInfo';
+import { getMovieById } from 'services/getMoviesAndInfo';
 import Loader from 'components/Loader';
 import { AdditionalLink, BackLink, Img } from './MovieDetails.styled';
 import { Box } from 'components/Box';

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getCast } from 'components/services/getMoviesAndInfo';
+import { getCast } from 'services/getMoviesAndInfo';
 import { IMG_PATH } from '../MovieDetails/MovieDetails';
 import { CastImg, List, ListItem } from './Cast.styled';
 import { Box } from 'components/Box';

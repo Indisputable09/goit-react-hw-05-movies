@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { getMovieBySearch } from 'components/services/getMoviesAndInfo';
+import { getMovieBySearch } from 'services/getMoviesAndInfo';
 import { Button, Form, Input } from './Movies.styled';
 import { Container, Img, ImgTitle, List, ListItem } from '../Home/Home.styled';
 import { IMG_PATH } from '../MovieDetails/MovieDetails';

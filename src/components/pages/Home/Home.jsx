@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { fetchTrendingToday } from 'components/services/getMoviesAndInfo';
+import { fetchTrendingToday } from 'services/getMoviesAndInfo';
 import { Box } from 'components/Box';
 import { IMG_PATH } from '../MovieDetails/MovieDetails';
 import { Container, Img, ImgTitle, List, ListItem, Title } from './Home.styled';
