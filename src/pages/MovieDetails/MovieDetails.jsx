@@ -10,7 +10,6 @@ export const IMG_PATH = 'https://image.tmdb.org/t/p/w500/';
 const MovieDetails = () => {
   const { movieId } = useParams();
   const location = useLocation();
-  console.log('~ location', location);
 
   // const backLinkHref =
   //   location.state?.from ?? '/movies' + location.state?.search ?? '/movies';
@@ -50,7 +49,8 @@ const MovieDetails = () => {
     })();
   }, [movie.genre_ids, movieId, pending, rejected, resolved]);
 
-  const { backdrop_path, title, release_date, vote_average, overview } = movie;
+  console.log(movie);
+  const { poster_path, title, release_date, vote_average, overview } = movie;
 
   return (
     <>
@@ -58,7 +58,14 @@ const MovieDetails = () => {
         <Box>
           <Box as="div" p="5">
             <BackLink to={backLinkHref}>Back to movies</BackLink>
-            <Img src={IMG_PATH + backdrop_path} alt={title} />
+            <Img
+              src={
+                poster_path
+                  ? IMG_PATH + poster_path
+                  : 'https://yt3.ggpht.com/AAKF_677TIvjFz_9xFF0R6PgiVd0kRpEtY6APSxSDRP65nXg8hkn9NFsz2bRd9_Z37DJ9D_b=s900-c-k-c0x00ffffff-no-rj'
+              }
+              alt={title}
+            />
             <Box
               as="h2"
               textAlign={'center'}
