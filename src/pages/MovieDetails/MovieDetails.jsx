@@ -47,7 +47,7 @@ const MovieDetails = () => {
         setStatus(rejected);
       }
     })();
-  }, [movie.genre_ids, movieId, pending, rejected, resolved]);
+  }, [movieId, pending, rejected, resolved]);
 
   console.log(movie);
   const { poster_path, title, release_date, vote_average, overview } = movie;
