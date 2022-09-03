@@ -4,14 +4,6 @@ import styled from 'styled-components';
 export const Img = styled.img`
   width: 300px;
   margin: ${p => p.theme.space[4]}px auto;
-
-  @media screen and (min-width: 768px) {
-    width: 500px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    width: 700px;
-  }
 `;
 
 export const AdditionalLink = styled(Link)`
