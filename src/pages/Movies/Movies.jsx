@@ -3,8 +3,8 @@ import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { getMovieBySearch } from 'services/getMoviesAndInfo';
 import { Button, Form, Input } from './Movies.styled';
 import { Container, Img, ImgTitle, List, ListItem } from '../Home/Home.styled';
-import { IMG_PATH } from '../MovieDetails/MovieDetails';
 import { Box } from 'components/Box';
+import { DEFAULT_IMG, IMG_PATH } from 'constants/constants';
 
 const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -58,11 +58,7 @@ const Movies = () => {
                 <ListItem key={id}>
                   <Link to={`${id}`} state={{ from: location }}>
                     <Img
-                      src={
-                        poster_path
-                          ? IMG_PATH + poster_path
-                          : 'https://yt3.ggpht.com/AAKF_677TIvjFz_9xFF0R6PgiVd0kRpEtY6APSxSDRP65nXg8hkn9NFsz2bRd9_Z37DJ9D_b=s900-c-k-c0x00ffffff-no-rj'
-                      }
+                      src={poster_path ? IMG_PATH + poster_path : DEFAULT_IMG}
                       alt={title}
                       loading="lazy"
                     />
